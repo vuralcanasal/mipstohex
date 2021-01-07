@@ -1,0 +1,94 @@
+
+public class Itype extends Instruction{
+	private String rs;				// instruction[24-20]
+	private String rt;				// instruction[19-15]
+	private String offset;			// instruction[14-0]
+
+	public String ItypeInteractionConverter(LookupTable lookupTable, String operand, String[] registers, int operandIndex) {
+		if(registers.length==3) {
+			// if the operand is a branch type that means its first character is 'b'
+			if(operand.charAt(0) == 'b'){
+				this.rs = registers[0];
+				this.rt = registers[1];
+				this.offset= registers[2];
+			}
+			else{
+				this.rt = registers[0];
+				this.rs = registers[1];
+				this.offset= registers[2];
+			}
+			// find registers value
+			int indexRt=-1;
+			int indexRs=-1;
+			int found = 0;
+			for(int i = 0; i<lookupTable.registersName.length;i++)
+			{
+				if(this.rs.equals(lookupTable.registersName[i])){
+					found++;
+					indexRs = i;
+				}
+				if(this.rt.equals(lookupTable.registersName[i])){
+					found++;
+					indexRt = i;
+				}
+				if (found == 2) break;	
+			}
+			// if any of the register is unknown
+			if((indexRt == -1) || (indexRs == -1 ) )
+				return "Unknown register";
+			// find immediate value
+			boolean sign;
+			//checking if immediate is negative or positive
+			if(this.offset.charAt(0) == '-'){
+				this.offset = this.offset.substring(1);
+				sign = false;
+			}
+			else
+				sign = true;
+			
+			try {
+			for(int i=0; i < this.offset.length(); i++)
+	    	{
+					int intImmediate=Integer.parseInt(this.offset);
+					System.out.println(intImmediate);
+					this.offset = Integer.toBinaryString(intImmediate);	
+	    	}
+			}catch (Exception e) {
+					return "Error: Immediate number";
+			}
+			
+			System.out.println(this.offset);
+			
+	    		
+		}
+		return null;
+	}
+	
+	// set and get functions
+	public String getRs() {
+		return rs;
+	}
+	
+	public void setRs(String rs) {
+		this.rs = rs;
+	}
+	
+	public String getRt() {
+		return rt;
+	}
+	
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
+	
+	public String getOffset() {
+		return offset;
+	}
+	
+	public void setOffset(String offset) {
+		this.offset = offset;
+	}
+
+	
+
+}

@@ -1,0 +1,16 @@
+
+public class main {
+	
+	public static void main() {
+		
+		final String startPoint="10000000000000000001000000000000";   // initial address
+		final String lookupTablePath="\\lookup_table.txt";	//lookup table's path
+		final String input="\\input.src";	//  .src file's path
+		final String output="\\output.obj";		//	.obj file's path
+		
+		LookupTable lookupTable = new LookupTable(lookupTablePath);	// read lookup table
+		new Menu(lookupTable, startPoint, input, output);
+		
+	}
+
+}

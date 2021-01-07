@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\Vural\Desktop\MipsToHex\.metadata\.plugins\org.eclipse.jdt.core
+499757081.index

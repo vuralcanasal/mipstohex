@@ -1,0 +1,22 @@
+1606934066160	Encapsulate field 'operation'
+1606934081529	Encapsulate field 'opcode'
+1606934289907	Encapsulate field 'rt'
+1606934294526	Encapsulate field 'rs'
+1606934298723	Encapsulate field 'shamt'
+1606934305150	Encapsulate field 'functionCode'
+1606934470117	Delete element
+1606934475399	Delete element
+1606934614801	Encapsulate field 'operation'
+1606934618513	Encapsulate field 'opcode'
+1606935364015	Encapsulate field 'rs'
+1606935368350	Encapsulate field 'rt'
+1606935372183	Encapsulate field 'rd'
+1606935375741	Encapsulate field 'shamt'
+1606935379921	Encapsulate field 'functionCode'
+1606935569521	Encapsulate field 'rs'
+1606935574752	Encapsulate field 'rt'
+1606935578861	Encapsulate field 'offset'
+1606935729472	Encapsulate field 'target'
+1606936560795	Delete element
+1606943347206	Encapsulate field 'registersName'
+1606943420773	Encapsulate field 'registersValue'

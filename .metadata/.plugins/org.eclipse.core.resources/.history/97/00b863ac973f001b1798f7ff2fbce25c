@@ -1,0 +1,38 @@
+
+public class Itype extends Instruction{
+	private String rs;				// instruction[24-20]
+	private String rt;				// instruction[19-15]
+	private String offset;			// instruction[14-0]
+
+	public String ItypeConverter(LookupTable lookupTable, String string, String[] rest, int instructionIndex) {
+		
+		
+		return null;
+	}
+	
+	// set and get functions
+	public String getRs() {
+		return rs;
+	}
+	
+	public void setRs(String rs) {
+		this.rs = rs;
+	}
+	
+	public String getRt() {
+		return rt;
+	}
+	
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
+	
+	public String getOffset() {
+		return offset;
+	}
+	
+	public void setOffset(String offset) {
+		this.offset = offset;
+	}
+
+}

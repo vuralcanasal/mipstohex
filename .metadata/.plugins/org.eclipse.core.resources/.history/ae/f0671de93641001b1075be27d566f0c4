@@ -1,0 +1,76 @@
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class MipsToHex {
+	
+	MipsToHex(String lookupTablePath, String startPoint, String inputFile, String outputFile) {
+		//taking path of absolute directory
+		String mainPath = System.getProperty("user.dir");
+		
+		lookupTablePath = mainPath + lookupTablePath;
+		// read lookup table from .txt file and create it
+		LookupTable lookupTable = new LookupTable(lookupTablePath);	
+		
+		// create the window items for main menu
+		JFrame fr = new JFrame("Mips To Hex");
+		 
+		JButton Interactive = new JButton("Interactive");
+		JButton Batch = new JButton("Batch");
+		JButton exit = new JButton("Exit");
+		Interactive.setBounds(300,100,95,30);
+		Batch.setBounds(300,150,95,30);
+		exit.setBounds(300,200,95,30);
+		
+		JLabel message = new JLabel();
+        message.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        message.setSize(1000, 20);
+        message.setLocation(50, 50); 
+		// created the window items
+				
+		// add all items on the window
+		fr.add(Interactive);
+		fr.add(Batch);
+		fr.add(exit);
+		fr.add(message);
+		
+		fr.setSize(600,500);
+		fr.setLayout(null);
+		fr.setVisible(true);
+		// end GUI
+		
+
+		// exit button function
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				}
+		});
+		
+		// interactive mode
+		Interactive.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Interactive(lookupTable, startPoint);
+			}
+		});
+		
+		// batch mode
+		Batch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String inputSourcePath = mainPath + inputFile;
+				String outputObjPath = mainPath + outputFile;
+				String msg = new Batch().createObjFile(lookupTable,inputSourcePath,outputObjPath,startPoint);
+				message.setText(msg);
+			}
+		});
+		
+	}
+
+}

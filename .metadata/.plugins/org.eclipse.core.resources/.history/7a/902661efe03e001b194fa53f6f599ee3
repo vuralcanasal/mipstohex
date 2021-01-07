@@ -1,0 +1,50 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class MipsToHex {
+	
+	MipsToHex(LookupTable lookupTable, String startPoint, String inputFile, String outputFile) {
+		
+		// create the window items for main menu
+		JFrame fr = new JFrame("Mips To Hex");
+		 
+		JButton Interactive = new JButton("Interactive");
+		JButton Batch = new JButton("Batch");
+		JButton exit = new JButton("Exit");
+		Interactive.setBounds(200,100,95,30);
+		Batch.setBounds(200,150,95,30);
+		exit.setBounds(200,200,95,30);
+		// created the window items
+		
+		// exit button function
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				}
+		});
+		
+		// interactive mode
+		Interactive.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Interactive(lookupTable);
+			}
+		});
+		
+		
+		
+		// add all items on the window
+		fr.add(Interactive);
+		fr.add(Batch);
+		fr.add(exit);
+		
+		fr.setSize(500,500);
+		fr.setLayout(null);
+		fr.setVisible(true);
+		// end GUI
+	}
+
+}

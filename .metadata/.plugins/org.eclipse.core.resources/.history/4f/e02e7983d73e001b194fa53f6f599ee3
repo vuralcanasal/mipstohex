@@ -1,0 +1,16 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class main {
+	private static final String startPoint="10000000000000000001000000000000";   // initial address
+	private static final String lookupTable="\\lookup_table.txt";	//lookup table's path
+	private static final String input="\\input.src";	//  .src file's path
+	private static final String output="\\output.obj";		//	.obj file's path
+	
+	public static void main(String[] args) {
+		
+		LookupTable lookupTable = new LookupTable();	// read lookup table
+
+	}
+
+}

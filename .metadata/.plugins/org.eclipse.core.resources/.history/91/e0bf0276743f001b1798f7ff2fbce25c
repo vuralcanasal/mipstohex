@@ -1,0 +1,106 @@
+
+public class Rtype extends Registers{
+	private String rs;				// instruction[24-20]
+	private String rt;				// instruction[19-15]
+	private String rd;				// instruction[14-10]
+	private String shamt;			// instruction[9-5]
+	private String functionCode;	// instruction[4-0]
+	
+	public String Rtype(LookupTable lookupTable, String operand, String[] registers, int operandIndex) {
+		if (registers.length == 3) {
+			// if the 3. element of the register part is integer such as "sll $t0,$t1,5"
+			if(Character.isDigit(registers[2].charAt(0))){
+				this.rd = registers[0];
+				this.rt = registers[1];
+				this.rs = "$zero"; // for zero value
+				this.shamt = registers[2];
+			}
+			else {
+				this.rd = registers[0];
+				this.rt = registers[1];
+				this.rs = registers[2];
+				this.shamt = "0";
+			}
+			// find registers value
+			int indexRs=-1;
+			int indexRt=-1;
+			int indexRd=-1;
+			int found = 0;
+			for(int i = 0; i<lookupTable.registersName.length;i++)
+			{
+				if(this.rs.equals(lookupTable.registersName[i])){
+					found++;
+					indexRs = i;
+				}
+					
+				if(this.rt.equals(lookupTable.registersName[i])) {
+					found++;
+					indexRt = i;
+				}
+					
+				if(this.rd.equals(lookupTable.registersName[i])){
+					found++;
+					indexRd = i;
+				}
+				
+				if (found == 3) break;
+			}
+			// if any of the register is unknown
+			if((indexRs == -1) || (indexRt == -1 ) || (indexRd == -1 ))				
+				return "Unknown register";
+			else {
+				// set registers, opcode and function values
+				this.setRt(lookupTable.registersValue[indexRt]);
+				this.setRs(lookupTable.registersValue[indexRs]);
+				this.setRd(lookupTable.registersValue[indexRd]);
+				this.setOpcode(lookupTable.opcodes.get(operandIndex));
+				this.setFunctionCode(lookupTable.functions.get(operandIndex));
+			}
+			
+			
+		}
+		return "asd";
+	}
+
+	// set and get functions
+	public String getRs() {
+		return rs;
+	}
+	
+	public void setRs(String rs) {
+		this.rs = rs;
+	}
+	
+	public String getRt() {
+		return rt;
+	}
+	
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
+	
+	public String getRd() {
+		return rd;
+	}
+	
+	public void setRd(String rd) {
+		this.rd = rd;
+	}
+	
+	public String getShamt() {
+		return shamt;
+	}
+	
+	public void setShamt(String shamt) {
+		this.shamt = shamt;
+	}
+	
+	public String getFunctionCode() {
+		return functionCode;
+	}
+	
+	public void setFunctionCode(String functionCode) {
+		this.functionCode = functionCode;
+	}
+	
+}
