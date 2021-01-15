@@ -20,7 +20,7 @@ public class Itype extends Instruction{
 		}
 		
 		//For lw&sw type instructions
-		else if(registers.length==2){
+		if(registers.length==2){
 			// take first part for rt
 			this.rt = registers[0];
 			// Separate second part. before '(' for immediate and between two paranteces for rs
